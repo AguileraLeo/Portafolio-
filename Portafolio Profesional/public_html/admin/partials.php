@@ -1,0 +1,8 @@
+<?php
+function admin_header($titulo = 'Dashboard') { ?>
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title><?= htmlspecialchars($titulo) ?></title><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"><link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet"><link href="../assets/css/style.css?v=10" rel="stylesheet"></head><body class="admin-body"><div class="container-fluid"><div class="row"><aside class="col-md-3 col-lg-2 sidebar p-4"><h4 class="fw-bold mb-4"><i class="bi bi-speedometer2 text-info me-2"></i>Admin</h4><a href="dashboard.php"><i class="bi bi-house me-2"></i>Inicio</a><a href="biografia.php"><i class="bi bi-person me-2"></i>Biografía</a><a href="habilidades.php"><i class="bi bi-tools me-2"></i>Habilidades</a><a href="tecnologias.php"><i class="bi bi-bar-chart me-2"></i>Tecnologías</a><a href="proyectos.php"><i class="bi bi-folder me-2"></i>Proyectos</a><a href="mensajes.php"><i class="bi bi-envelope me-2"></i>Mensajes</a><a href="../index.php" target="_blank"><i class="bi bi-eye me-2"></i>Ver sitio</a><a href="logout.php"><i class="bi bi-box-arrow-right me-2"></i>Salir</a></aside><main class="col-md-9 col-lg-10 p-4"><div class="d-flex justify-content-between align-items-center mb-4"><div><h1 class="h3 fw-bold mb-0"><?= htmlspecialchars($titulo) ?></h1><p class="text-secondary mb-0">Panel administrativo del portafolio</p></div></div>
+<?php }
+function admin_footer() { ?>
+</main></div></div><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script></body></html>
+<?php }
+?>

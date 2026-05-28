@@ -1,0 +1,1220 @@
+/* =========================================================
+   style.css  — LSA Interactive Portfolio
+   Estilo: Soft UI / Neumorphism  · Modo claro forzado
+   ========================================================= */
+
+
+/* =========================================================
+   01. VARIABLES GLOBALES
+   ========================================================= */
+
+:root {
+  /* Fondos */
+  --bg-main:   #eef3f8;
+  --bg-soft:   #f7f9fc;
+  --bg-white:  #ffffff;
+  --bg-card:   #eef3f8;
+
+  /* Textos */
+  --text-main:  #1f2937;
+  --text-muted: #6b7280;
+  --text-soft:  #94a3b8;
+
+  /* Paleta azul suave */
+  --primary:            #7fb3d5;
+  --primary-soft:       #d8ecf8;
+  --primary-extra-soft: #eef8fd;
+  --primary-dark:       #4f8fb7;
+
+  /* Bordes */
+  --border-soft: rgba(255, 255, 255, 0.80);
+  --border-blue: rgba(127, 179, 213, 0.24);
+  --border-gray: rgba(148, 163, 184, 0.18);
+
+  /* Sombras neumorphism */
+  --shadow-out:
+    10px 10px 24px rgba(163,177,198,.45),
+    -10px -10px 24px rgba(255,255,255,.95);
+
+  --shadow-out-small:
+    6px 6px 14px rgba(163,177,198,.38),
+    -6px -6px 14px rgba(255,255,255,.90);
+
+  --shadow-out-hover:
+    14px 14px 34px rgba(163,177,198,.52),
+    -14px -14px 34px rgba(255,255,255,.98);
+
+  --shadow-in:
+    inset 7px 7px 16px rgba(163,177,198,.38),
+    inset -7px -7px 16px rgba(255,255,255,.95);
+
+  --shadow-in-small:
+    inset 4px 4px 10px rgba(163,177,198,.34),
+    inset -4px -4px 10px rgba(255,255,255,.95);
+
+  /* Radios */
+  --radius-xl:   30px;
+  --radius-lg:   24px;
+  --radius-md:   18px;
+  --radius-sm:   14px;
+  --radius-pill: 999px;
+
+  /* Transiciones */
+  --transition-fast: all 0.22s ease;
+  --transition-soft: all 0.35s ease;
+  --transition-slow: all 0.55s ease;
+}
+
+
+/* =========================================================
+   02. RESET BASE Y FONDO GLOBAL (MODO CLARO FORZADO)
+   ========================================================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  /* Forzar modo claro aunque el SO use dark mode */
+  color-scheme: light only;
+}
+
+/* Fondo general de la página — claro, nunca oscuro */
+html,
+body {
+  margin: 0;
+  background:       #f3f7fb !important;
+  background-color: #f3f7fb !important;
+  color:            var(--text-main) !important;
+  font-family:      "Inter", "Segoe UI", Arial, sans-serif;
+  overflow-x:       hidden;
+}
+
+/* Degradado decorativo fijo */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 15% 10%, rgba(127,179,213,.18), transparent 28%),
+    radial-gradient(circle at 90% 30%, rgba(216,236,248,.55), transparent 26%),
+    linear-gradient(135deg, #eef3f8 0%, #f8fbfd 50%, #eef3f8 100%);
+}
+
+/* Textura muy leve */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(31,41,55,.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(31,41,55,.025) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,.36), transparent 72%);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+::selection {
+  background: var(--primary-soft);
+  color:      var(--primary-dark);
+}
+
+
+/* =========================================================
+   03. NEUTRALIZAR CLASES BOOTSTRAP OSCURAS
+       (bg-dark, bg-black, navbar-dark, text-white, etc.)
+   ========================================================= */
+
+/* Fondos oscuros de Bootstrap → claros */
+.bg-dark,
+.bg-black,
+.bg-secondary,
+.bg-body-tertiary,
+.text-bg-dark {
+  background:       #f3f7fb !important;
+  background-color: #f3f7fb !important;
+  color:            var(--text-main) !important;
+}
+
+/* Texto blanco / claro sobre fondo oscuro → oscuro */
+.text-white,
+.text-light {
+  color: var(--text-main) !important;
+}
+
+/* Navbar con clase dark de Bootstrap → clara */
+.navbar-dark .navbar-brand,
+.navbar-dark .nav-link,
+.navbar-dark .navbar-toggler-icon {
+  color: var(--text-main) !important;
+  filter: none;
+}
+
+/* Contenedores Bootstrap — nunca coloreados */
+.container,
+.container-fluid,
+.row,
+.col,
+[class*="col-"] {
+  background-color: transparent !important;
+}
+
+/* Cualquier fondo oscuro inline inyectado por Bootstrap o JS */
+[data-bs-theme="dark"] {
+  color-scheme: light !important;
+  --bs-body-bg:    #f3f7fb !important;
+  --bs-body-color: #1f2937 !important;
+}
+
+
+/* =========================================================
+   04. TEXTOS Y TÍTULOS
+   ========================================================= */
+
+h1, h2, h3, h4, h5, h6 {
+  color:          var(--text-main) !important;
+  letter-spacing: -0.045em;
+}
+
+p, li {
+  color: var(--text-muted);
+}
+
+/* Clase utilitaria para texto secundario */
+.text-muted-custom,
+.text-muted,
+.text-secondary {
+  color: var(--text-muted) !important;
+}
+
+.text-main {
+  color: var(--text-main) !important;
+}
+
+.section-title {
+  margin-top:    12px;
+  margin-bottom: 10px;
+  color:         var(--text-main) !important;
+  font-weight:   800;
+  letter-spacing: -1.3px;
+}
+
+.hero-subtitle {
+  color:       var(--primary-dark) !important;
+  font-weight: 700;
+}
+
+/* Etiqueta decorativa sobre título */
+.eyebrow {
+  display:       inline-flex;
+  align-items:   center;
+  gap:           8px;
+  padding:       0.55rem 1rem;
+  border-radius: var(--radius-pill);
+  background:    var(--bg-main);
+  color:         var(--primary-dark);
+  border:        1px solid var(--border-soft);
+  box-shadow:    var(--shadow-out-small);
+  font-size:     0.82rem;
+  font-weight:   800;
+  letter-spacing: 0.03em;
+}
+
+
+/* =========================================================
+   05. NAVBAR
+   ========================================================= */
+
+.navbar {
+  background:      rgba(238,243,248,.88) !important;
+  backdrop-filter: blur(20px);
+  border-bottom:   1px solid rgba(255,255,255,.75);
+  box-shadow:      0 12px 34px rgba(163,177,198,.24);
+  transition:      var(--transition-soft);
+}
+
+.navbar.scrolled {
+  background: rgba(238,243,248,.96) !important;
+  box-shadow: 0 16px 44px rgba(163,177,198,.32);
+}
+
+/* Links del menú — siempre oscuros */
+.navbar-brand,
+.nav-link {
+  color: var(--text-main) !important;
+}
+
+.nav-link {
+  padding:       10px 16px !important;
+  border-radius: var(--radius-pill);
+  color:         var(--text-muted) !important;
+  font-size:     0.94rem;
+  font-weight:   700;
+  transition:    var(--transition-soft);
+}
+
+.nav-link:hover,
+.nav-link:focus {
+  color:      var(--primary-dark) !important;
+  background: var(--bg-main);
+  box-shadow: var(--shadow-in-small);
+  transform:  translateY(-1px);
+}
+
+/* Botón hamburgesa */
+.navbar-toggler {
+  border:        1px solid var(--border-soft);
+  border-radius: var(--radius-md);
+  background:    var(--bg-main);
+  box-shadow:    var(--shadow-out-small);
+}
+
+.navbar-toggler-icon {
+  /* Forzar ícono oscuro independientemente de navbar-dark */
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%231f2937' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+}
+
+.navbar-toggler:focus {
+  box-shadow: var(--shadow-in-small);
+}
+
+
+/* =========================================================
+   06. LOGO
+   ========================================================= */
+
+.company-logo {
+  display:     flex;
+  align-items: center;
+  gap:         13px;
+  overflow:    hidden;
+  text-decoration: none;
+}
+
+.logo-box {
+  position:       relative;
+  width:          52px;
+  height:         52px;
+  display:        flex;
+  flex-shrink:    0;
+  align-items:    center;
+  justify-content: center;
+  border-radius:  18px;
+  background:     var(--bg-main);
+  box-shadow:     var(--shadow-out-small);
+  transition:     var(--transition-slow);
+}
+
+.logo-symbol {
+  position: relative;
+  width:    48px;
+  height:   48px;
+}
+
+.shape {
+  position:   absolute;
+  display:    block;
+  box-shadow: 0 8px 18px rgba(79,143,183,.18);
+}
+
+.shape1 {
+  width: 10px; height: 38px;
+  left: 10px; top: 5px;
+  border-radius: 30px;
+  background: linear-gradient(180deg, #eaf6fd, var(--primary-dark));
+  transform:  rotate(30deg);
+  transition: var(--transition-slow);
+}
+
+.shape2 {
+  width: 10px; height: 38px;
+  right: 10px; top: 5px;
+  border-radius: 30px;
+  background: linear-gradient(180deg, #ffffff, #79aac9);
+  transform:  rotate(-30deg);
+  transition: var(--transition-slow);
+}
+
+.shape3 {
+  width: 22px; height: 8px;
+  bottom: 6px; left: 13px;
+  border-radius: 30px;
+  background: linear-gradient(90deg, #eaf6fd, var(--primary-dark));
+  transition: var(--transition-slow);
+}
+
+.logo-text {
+  display:        flex;
+  flex-direction: column;
+  max-width:      350px;
+  overflow:       hidden;
+  white-space:    nowrap;
+  transition:     var(--transition-soft);
+}
+
+.logo-title {
+  color:          var(--text-main);
+  font-size:      1.25rem;
+  font-weight:    800;
+  line-height:    1;
+  letter-spacing: -0.5px;
+}
+
+.logo-subtitle {
+  margin-top:     6px;
+  color:          var(--text-soft);
+  font-size:      0.62rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.company-logo:hover .logo-box     { transform: translateY(-2px); box-shadow: var(--shadow-out-hover); }
+.company-logo:hover .logo-symbol  { transform: scale(1.06) rotate(-7deg); }
+.company-logo:hover .shape1       { transform: rotate(38deg)  translateY(-4px); }
+.company-logo:hover .shape2       { transform: rotate(-38deg) translateY(-4px); }
+.company-logo:hover .shape3       { transform: scale(1.18); }
+
+
+/* =========================================================
+   07. HERO / PORTADA
+   ========================================================= */
+
+.hero {
+  min-height:     92vh;
+  display:        flex;
+  align-items:    center;
+  padding-top:    108px;
+  padding-bottom: 70px;
+  background:     transparent !important;
+}
+
+.profile-frame {
+  display:       inline-flex;
+  padding:       14px;
+  border-radius: 36px;
+  background:    var(--bg-main);
+  border:        1px solid var(--border-soft);
+  box-shadow:    var(--shadow-out);
+}
+
+.profile-frame img {
+  max-width:    340px;
+  width:        100%;
+  aspect-ratio: 1 / 1;
+  object-fit:   cover;
+  border-radius: 28px;
+  background:   var(--bg-soft);
+  box-shadow:   var(--shadow-in-small);
+}
+
+/* Animación flotante suave */
+.soft-float {
+  animation: softFloat 7s ease-in-out infinite;
+}
+
+@keyframes softFloat {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-10px); }
+}
+
+
+/* =========================================================
+   08. TARJETAS GENERALES (NEUMORPHISM)
+   ========================================================= */
+
+.glass-card,
+.card,
+.skill-card,
+.project-card,
+.tech-card,
+.demo-card,
+.admin-card,
+.contact-card,
+.info-card {
+  background:    var(--bg-card) !important;
+  color:         var(--text-main) !important;
+  border:        1px solid var(--border-soft) !important;
+  border-radius: var(--radius-xl);
+  box-shadow:    var(--shadow-out);
+  transition:    var(--transition-soft);
+}
+
+.glass-card {
+  padding: 28px;
+}
+
+/* Hover: elevación leve */
+.card:hover,
+.glass-card:hover,
+.skill-card:hover,
+.project-card:hover,
+.tech-card:hover,
+.demo-card:hover,
+.admin-card:hover,
+.contact-card:hover,
+.info-card:hover {
+  transform:  translateY(-7px);
+  box-shadow: var(--shadow-out-hover);
+  border-color: var(--border-blue) !important;
+}
+
+/* card-body de Bootstrap no debe tener fondo oscuro */
+.card-body {
+  background:    transparent !important;
+  color:         var(--text-main) !important;
+}
+
+/* Imagen de portada en proyectos de BD */
+.card-img-top {
+  height:      190px;
+  object-fit:  cover;
+  padding:     22px;
+  background:  var(--bg-main);
+  border-bottom: 1px solid var(--border-soft);
+  box-shadow:  var(--shadow-in-small);
+}
+
+
+/* =========================================================
+   09. BOTONES SOFT UI
+   ========================================================= */
+
+.btn,
+button,
+input[type="submit"] {
+  border:        1px solid var(--border-soft);
+  border-radius: var(--radius-pill);
+  padding:       0.78rem 1.25rem;
+  font-weight:   700;
+  transition:    var(--transition-soft);
+  cursor:        pointer;
+}
+
+.btn-sm {
+  padding:       0.58rem 1rem;
+  border-radius: var(--radius-pill);
+  font-size:     0.85rem;
+}
+
+/* Botón primario — azul suave */
+.btn-primary,
+.btn-demo {
+  background: linear-gradient(145deg, #eaf5fb, #d8ecf8) !important;
+  color:      var(--primary-dark) !important;
+  border:     1px solid var(--border-soft) !important;
+  box-shadow: var(--shadow-out-small);
+}
+
+.btn-primary:hover,
+.btn-demo:hover {
+  background: linear-gradient(145deg, #d8ecf8, #f2fbff) !important;
+  color:      #2f6f95 !important;
+  transform:  translateY(-3px);
+  box-shadow: var(--shadow-out-hover);
+}
+
+/* Botón secundario / GitHub — gris suave */
+.btn-outline-soft,
+.btn-outline-dark,
+.btn-outline-light,
+.btn-github {
+  background: var(--bg-main) !important;
+  color:      var(--text-main) !important;
+  border:     1px solid var(--border-soft) !important;
+  box-shadow: var(--shadow-out-small);
+}
+
+.btn-outline-soft:hover,
+.btn-outline-dark:hover,
+.btn-outline-light:hover,
+.btn-github:hover {
+  background:   var(--bg-main) !important;
+  color:        var(--primary-dark) !important;
+  border-color: var(--border-blue) !important;
+  transform:    translateY(-3px);
+  box-shadow:   var(--shadow-out-hover);
+}
+
+/* Efecto presionado */
+.btn:active,
+button:active,
+input[type="submit"]:active {
+  transform:  translateY(0) !important;
+  box-shadow: var(--shadow-in) !important;
+}
+
+
+/* =========================================================
+   10. SECCIONES — TRANSPARENTES SOBRE FONDO GLOBAL
+   ========================================================= */
+
+section,
+.hero,
+#biografia, #habilidades, #tecnologias, #proyectos, #contacto,
+.about-section, .skills-section, .tech-section,
+.projects-section, .contact-section {
+  background:       transparent !important;
+  background-color: transparent !important;
+}
+
+/* Reveal al hacer scroll */
+.section-reveal {
+  opacity:    0;
+  transform:  translateY(18px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+
+.section-reveal.visible {
+  opacity:   1;
+  transform: translateY(0);
+}
+
+
+/* =========================================================
+   11. HABILIDADES
+   ========================================================= */
+
+.skill-card,
+.tech-card {
+  padding:    24px;
+  text-align: center;
+}
+
+.skill-grow-card {
+  position:   relative;
+  min-height: 275px;
+  overflow:   hidden;
+  cursor:     default;
+}
+
+/* Caja de imagen — hundida */
+.skill-icon {
+  width:           100%;
+  height:          132px;
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+  margin-bottom:   18px !important;
+  overflow:        hidden;
+  border-radius:   var(--radius-lg);
+  background:      var(--bg-main) !important;
+  border:          1px solid var(--border-soft);
+  box-shadow:      var(--shadow-in-small);
+}
+
+.skill-tool-img {
+  width:      100%;
+  height:     100%;
+  object-fit: contain;
+  padding:    22px;
+  filter:     saturate(.88) contrast(.98) drop-shadow(5px 8px 10px rgba(163,177,198,.35));
+  transition: var(--transition-slow);
+}
+
+.skill-card:hover .skill-tool-img {
+  transform: scale(1.08) translateY(-4px);
+  filter:    saturate(1) contrast(1) drop-shadow(7px 12px 14px rgba(127,179,213,.26));
+}
+
+.skill-card h5 { color: var(--text-main);  font-weight: 800; }
+.skill-card p  { margin: 0; color: var(--text-muted); font-size: .9rem; line-height: 1.55; }
+
+
+/* =========================================================
+   12. TECNOLOGÍAS — BARRAS DE PROGRESO Y BADGES
+   ========================================================= */
+
+/* Badge personalizado (reemplaza text-bg-info de Bootstrap) */
+.badge-soft,
+.text-bg-info {
+  display:       inline-block;
+  padding:       .35em .72em;
+  border-radius: var(--radius-pill);
+  background:    var(--primary-soft) !important;
+  color:         var(--primary-dark) !important;
+  border:        1px solid var(--border-blue);
+  font-size:     .78rem;
+  font-weight:   700;
+  box-shadow:    var(--shadow-in-small);
+}
+
+.progress {
+  height:        11px;
+  overflow:      hidden;
+  border-radius: var(--radius-pill);
+  background:    var(--bg-main);
+  box-shadow:    var(--shadow-in-small);
+}
+
+.progress-bar {
+  border-radius: var(--radius-pill);
+  background:    linear-gradient(90deg, var(--primary), #a8d5ef);
+  transition:    width 1.2s ease;
+}
+
+
+/* =========================================================
+   13. PROYECTOS — CARDS
+   ========================================================= */
+
+.project-card {
+  display:        flex;
+  flex-direction: column;
+  overflow:       hidden;
+  padding:        0;
+}
+
+.project-card .card-body { padding: 26px; }
+
+.project-card-head {
+  display:      flex;
+  align-items:  flex-start;
+  gap:          14px;
+  margin-bottom: 14px;
+  padding:      24px 24px 0;
+}
+
+.project-card-head span {
+  display:     block;
+  margin-bottom: 3px;
+  color:       var(--text-muted);
+  font-size:   .78rem;
+  font-weight: 700;
+}
+
+.project-card h5,
+.project-card h4,
+.project-card h3 {
+  margin:      0;
+  color:       var(--text-main) !important;
+  font-weight: 800;
+  letter-spacing: -.4px;
+}
+
+.project-card p {
+  color:       var(--text-muted);
+  line-height: 1.7;
+  padding:     0 24px;
+}
+
+/* Demo-card: aplica padding directamente */
+.demo-card {
+  padding: 24px;
+  gap:     16px;
+}
+
+.demo-card .project-card-head { padding: 0; }
+.demo-card p.text-muted-custom { padding: 0; }
+
+/* Icono cuadrado neumorphic */
+.project-icon {
+  width:           50px;
+  height:          50px;
+  min-width:       50px;
+  display:         grid;
+  place-items:     center;
+  border-radius:   18px;
+  background:      var(--bg-main);
+  color:           var(--primary-dark) !important;
+  border:          1px solid var(--border-soft);
+  box-shadow:      var(--shadow-out-small);
+  font-size:       1.35rem;
+  transition:      var(--transition-soft);
+}
+
+.project-card:hover .project-icon,
+.demo-card:hover .project-icon {
+  transform:  rotate(-5deg) scale(1.05);
+  box-shadow: var(--shadow-out-hover);
+}
+
+/* Píldoras de tecnologías */
+.tech-pills {
+  display:    flex;
+  flex-wrap:  wrap;
+  gap:        8px;
+  margin:     8px 0 12px;
+}
+
+.tech-pills span {
+  padding:       .42rem .72rem;
+  border-radius: var(--radius-pill);
+  background:    var(--bg-main) !important;
+  color:         var(--text-muted) !important;
+  border:        1px solid var(--border-soft);
+  box-shadow:    var(--shadow-in-small);
+  font-size:     .76rem;
+  font-weight:   700;
+}
+
+/* Botones al pie de la card */
+.project-card .d-flex,
+.demo-card .d-flex {
+  padding: 0 24px 24px;
+}
+
+.demo-card .d-flex { padding: 0; margin-top: auto !important; }
+
+
+/* =========================================================
+   14. PREVIEW DE DEMOS (caja decorativa antes del botón)
+   ========================================================= */
+
+.demo-cover {
+  position:      relative;
+  min-height:    210px;
+  overflow:      hidden;
+  border-radius: var(--radius-xl);
+  border:        1px solid var(--border-soft);
+  background:
+    radial-gradient(circle at 20% 20%, rgba(127,179,213,.22), transparent 30%),
+    linear-gradient(135deg, #ffffff, #eef3f8);
+  box-shadow:    var(--shadow-in-small);
+  margin:        0 0 16px;
+}
+
+.demo-cover::before {
+  content:       "";
+  position:      absolute;
+  width:         230px;
+  height:        230px;
+  right:         -95px;
+  bottom:        -95px;
+  border-radius: var(--radius-pill);
+  background:    rgba(127,179,213,.12);
+  transition:    var(--transition-slow);
+}
+
+.demo-card:hover .demo-cover::before { transform: scale(1.18) translate(-8px,-8px); }
+
+/* Barra superior simulada de navegador */
+.demo-browser {
+  height:        42px;
+  display:       flex;
+  align-items:   center;
+  gap:           7px;
+  padding:       0 16px;
+  border-bottom: 1px solid var(--border-soft);
+  background:    rgba(255,255,255,.56);
+  backdrop-filter: blur(12px);
+}
+
+.demo-browser span {
+  width:         10px;
+  height:        10px;
+  border-radius: 50%;
+  background:    #c9d3de;
+  box-shadow:    var(--shadow-out-small);
+}
+
+.demo-cover-content {
+  position:        relative;
+  z-index:         1;
+  min-height:      168px;
+  display:         flex;
+  flex-direction:  column;
+  align-items:     flex-start;
+  justify-content: flex-end;
+  padding:         22px;
+}
+
+.demo-cover-content i      { margin-bottom: 12px; color: var(--primary-dark) !important; font-size: 2.05rem; }
+.demo-cover-content strong { color: var(--text-main) !important; font-size: 1.12rem; font-weight: 900; }
+.demo-cover-content small  { max-width: 280px; color: var(--text-muted) !important; line-height: 1.45; }
+
+/* Colores de fondo por tipo de demo — todos claros */
+.demo-cover-syncstudy  { background: linear-gradient(135deg, #ffffff, #eaf2fb); }
+.demo-cover-testign    { background: linear-gradient(135deg, #ffffff, #edf1f5); }
+.demo-cover-cypress    { background: linear-gradient(135deg, #ffffff, #e9f4ef); }
+.demo-cover-webverbs   { background: linear-gradient(135deg, #ffffff, #f0f3fa); }
+.demo-cover-hashing    { background: linear-gradient(135deg, #ffffff, #f2f2f2); }
+.demo-cover-portfolio  { background: linear-gradient(135deg, #ffffff, #edf3f8); }
+
+
+/* =========================================================
+   15. FORMULARIOS — CAMPOS HUNDIDOS
+   ========================================================= */
+
+input,
+textarea,
+select,
+.form-control {
+  padding:    14px 18px !important;
+  border:     none !important;
+  border-radius: var(--radius-md) !important;
+  background:    var(--bg-main) !important;
+  color:         var(--text-main) !important;
+  box-shadow:    var(--shadow-in-small) !important;
+  transition:    var(--transition-soft);
+}
+
+input::placeholder,
+textarea::placeholder,
+.form-control::placeholder {
+  color: var(--text-soft);
+}
+
+input:focus,
+textarea:focus,
+select:focus,
+.form-control:focus {
+  outline:    none !important;
+  box-shadow: var(--shadow-in-small), 0 0 0 4px rgba(127,179,213,.18) !important;
+}
+
+
+/* =========================================================
+   16. CONTACTO
+   ========================================================= */
+
+.contact-links-grid {
+  display:               grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap:                   14px;
+}
+
+.contact-link-card {
+  min-width:     0;
+  display:       flex;
+  align-items:   center;
+  gap:           14px;
+  padding:       18px;
+  border-radius: var(--radius-lg);
+  background:    var(--bg-main) !important;
+  border:        1px solid var(--border-soft) !important;
+  box-shadow:    var(--shadow-out);
+  transition:    var(--transition-soft);
+  text-decoration: none;
+}
+
+.contact-link-card:hover {
+  transform:    translateY(-6px);
+  box-shadow:   var(--shadow-out-hover);
+  border-color: var(--border-blue) !important;
+}
+
+.contact-link-card i {
+  width:           50px;
+  height:          50px;
+  min-width:       50px;
+  display:         grid;
+  place-items:     center;
+  border-radius:   18px;
+  background:      var(--bg-main);
+  color:           var(--primary-dark) !important;
+  box-shadow:      var(--shadow-out-small);
+  font-size:       1.25rem;
+  transition:      var(--transition-soft);
+}
+
+.contact-link-card:hover i { transform: scale(1.05); box-shadow: var(--shadow-out-hover); }
+
+.contact-link-card strong {
+  display:     block;
+  color:       var(--text-main) !important;
+  font-weight: 800;
+}
+
+.contact-link-card span {
+  display:        block;
+  max-width:      180px;
+  overflow:       hidden;
+  color:          var(--text-muted) !important;
+  font-size:      .86rem;
+  white-space:    nowrap;
+  text-overflow:  ellipsis;
+}
+
+
+/* =========================================================
+   17. ALERTAS, TABLAS Y BADGES BOOTSTRAP
+   ========================================================= */
+
+.alert {
+  border:        none;
+  border-radius: var(--radius-md);
+  box-shadow:    var(--shadow-out-small);
+}
+
+.table {
+  --bs-table-bg:           transparent;
+  --bs-table-color:        var(--text-main);
+  --bs-table-border-color: var(--border-gray);
+}
+
+.badge,
+.project-card .badge {
+  background: var(--bg-main) !important;
+  color:      var(--primary-dark) !important;
+  border:     1px solid var(--border-blue) !important;
+  box-shadow: var(--shadow-in-small);
+}
+
+
+/* =========================================================
+   18. FOOTER
+   ========================================================= */
+
+.footer,
+footer {
+  background:       rgba(238,243,248,.9) !important;
+  background-color: rgba(238,243,248,.9) !important;
+  color:            var(--text-muted) !important;
+  border-top:       1px solid rgba(255,255,255,.75);
+  box-shadow:       0 -12px 34px rgba(163,177,198,.18);
+}
+
+.footer a,
+footer a {
+  color:      var(--primary-dark) !important;
+  transition: var(--transition-fast);
+}
+
+.footer a:hover,
+footer a:hover {
+  color:     var(--text-main) !important;
+  transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   19. PANEL ADMINISTRATIVO (sidebar)
+   ========================================================= */
+
+.admin-body {
+  background: var(--bg-main);
+  color:      var(--text-main);
+}
+
+.sidebar {
+  min-height:  100vh;
+  background:  var(--bg-main);
+  border-right: 1px solid var(--border-soft);
+  box-shadow:  10px 0 30px rgba(163,177,198,.24);
+}
+
+.sidebar a {
+  display:       block;
+  margin-bottom: 8px;
+  padding:       12px 16px;
+  border-radius: var(--radius-md);
+  color:         var(--text-muted);
+  font-weight:   700;
+  transition:    var(--transition-soft);
+}
+
+.sidebar a:hover,
+.sidebar a.active {
+  background: var(--bg-main);
+  color:      var(--primary-dark);
+  box-shadow: var(--shadow-in-small);
+}
+
+
+/* =========================================================
+   20. PÁGINAS DEMO INDEPENDIENTES
+   ========================================================= */
+
+.demo-page,
+.demo-body {
+  background: var(--bg-main);
+  color:      var(--text-main);
+}
+
+.demo-shell,
+.demo-window,
+.demo-panel {
+  background:    var(--bg-main);
+  border:        1px solid var(--border-soft);
+  border-radius: var(--radius-xl);
+  box-shadow:    var(--shadow-out);
+}
+
+.demo-window-header {
+  background:    rgba(255,255,255,.42);
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.demo-stat,
+.demo-widget,
+.demo-item {
+  background:    var(--bg-main);
+  border:        1px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  box-shadow:    var(--shadow-out-small);
+  transition:    var(--transition-soft);
+}
+
+.demo-stat:hover,
+.demo-widget:hover,
+.demo-item:hover {
+  transform:  translateY(-4px);
+  box-shadow: var(--shadow-out-hover);
+}
+
+
+/* =========================================================
+   21. ANIMACIONES EXTRA
+   ========================================================= */
+
+@keyframes softPulse {
+  0%, 100% { box-shadow: var(--shadow-out-small); }
+  50%       { box-shadow: 8px 8px 18px rgba(163,177,198,.46),
+                          -8px -8px 18px rgba(255,255,255,.98); }
+}
+
+.soft-pulse { animation: softPulse 4s ease-in-out infinite; }
+
+.hover-lift { transition: var(--transition-soft); }
+.hover-lift:hover {
+  transform:  translateY(-6px);
+  box-shadow: var(--shadow-out-hover);
+}
+
+
+/* =========================================================
+   22. RESPONSIVE — TABLET
+   ========================================================= */
+
+@media (max-width: 992px) {
+  .contact-links-grid { grid-template-columns: repeat(2, 1fr); }
+  .navbar-collapse    { padding: 16px 0; }
+  .nav-link           { margin-bottom: 6px; }
+  .hero               { min-height: auto; }
+}
+
+
+/* =========================================================
+   23. RESPONSIVE — CELULAR
+   ========================================================= */
+
+@media (max-width: 768px) {
+  .hero {
+    min-height: auto;
+    padding-top: 120px;
+    text-align: center;
+  }
+
+  .profile-frame   { margin-bottom: 18px; }
+  .logo-text       { display: none; }
+
+  .contact-links-grid { grid-template-columns: 1fr; }
+
+  .demo-card       { padding: 20px; }
+  .display-4       { font-size: 2.35rem; }
+
+  .demo-cover      { min-height: 190px; }
+  .demo-cover-content { min-height: 148px; }
+
+  .project-card .card-body { padding: 22px; }
+  .glass-card              { padding: 22px; }
+
+  .project-card .d-flex { padding: 0 22px 22px; }
+}
+
+
+/* =========================================================
+   24. ACCESIBILIDAD — REDUCIR MOVIMIENTO
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation:       none !important;
+    transition:      none !important;
+  }
+}
+
+/* =========================================================
+   AJUSTE FINAL IA - Modo claro Soft UI obligatorio
+   Evita que Bootstrap o estilos antiguos fuercen fondos oscuros.
+   ========================================================= */
+html,
+body {
+  background: #f3f7fb !important;
+  color: #1f2937 !important;
+}
+
+body,
+.admin-body {
+  background:
+    radial-gradient(circle at top left, rgba(216, 236, 248, 0.75), transparent 34%),
+    linear-gradient(135deg, #f7f9fc 0%, #f3f7fb 45%, #eef3f8 100%) !important;
+}
+
+.bg-dark,
+.bg-black,
+.navbar-dark,
+.text-bg-dark {
+  background: rgba(255, 255, 255, 0.82) !important;
+  color: #1f2937 !important;
+}
+
+.text-white,
+.text-light {
+  color: #1f2937 !important;
+}
+
+.navbar,
+.glass-card,
+.card,
+.sidebar,
+.admin-card,
+.table,
+.modal-content {
+  background: rgba(255, 255, 255, 0.82) !important;
+  color: #1f2937 !important;
+  border-color: rgba(127, 179, 213, 0.22) !important;
+}
+
+.form-control,
+.form-select,
+textarea {
+  background: #f7f9fc !important;
+  color: #1f2937 !important;
+  border: 1px solid rgba(127, 179, 213, 0.28) !important;
+  box-shadow: inset 6px 6px 14px rgba(174, 190, 205, 0.30),
+              inset -6px -6px 14px rgba(255, 255, 255, 0.92) !important;
+}
+
+.btn-primary,
+.btn-soft,
+.btn-outline-primary:hover {
+  background: linear-gradient(145deg, #7fb3d5, #4f8fb7) !important;
+  border-color: transparent !important;
+  color: #ffffff !important;
+  box-shadow: 8px 8px 18px rgba(79, 143, 183, 0.23),
+              -8px -8px 18px rgba(255, 255, 255, 0.95) !important;
+}
+
+.btn-outline-primary,
+.btn-outline-light {
+  background: rgba(255, 255, 255, 0.78) !important;
+  border-color: rgba(127, 179, 213, 0.45) !important;
+  color: #4f8fb7 !important;
+}
+
+.sidebar a {
+  color: #4f8fb7 !important;
+}
+
+.sidebar a:hover {
+  background: #d8ecf8 !important;
+  color: #1f2937 !important;
+}
