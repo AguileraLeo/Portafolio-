@@ -1,0 +1,153 @@
+# Uso de Inteligencia Artificial en el Desarrollo del Proyecto
+
+## Proyecto
+
+Portafolio Web Profesional Autoadministrable
+
+---
+
+# Objetivo del Documento
+
+Este documento tiene como objetivo explicar el uso de herramientas de Inteligencia Artificial durante el desarrollo del proyecto, detallando cómo fueron utilizadas como apoyo técnico, visual y de optimización dentro del proceso de desarrollo web.
+
+---
+
+# Herramientas de Inteligencia Artificial Utilizadas
+
+Durante el desarrollo del proyecto se utilizaron distintas herramientas de Inteligencia Artificial, entre ellas:
+
+* ChatGPT
+* Claude
+* DeepSeek
+
+Estas herramientas fueron utilizadas únicamente como apoyo complementario para el proceso de desarrollo, aprendizaje y mejora del sistema.
+
+---
+
+# Forma de Uso de la IA
+
+Las herramientas de IA fueron utilizadas principalmente para:
+
+* revisar código
+* corregir errores
+* optimizar estructura
+* mejorar diseño visual
+* proponer mejoras UI/UX
+* corregir rutas CSS
+* optimizar responsive design
+* mejorar organización de componentes
+* implementar colores y estilos modernos
+* agregar animaciones suaves y microinteracciones
+* mejorar formularios y botones
+* revisar integración frontend/backend
+* apoyar en despliegue mediante FileZilla
+* comprender errores de servidor y rutas
+
+La implementación final, pruebas, modificaciones y decisiones del proyecto fueron realizadas y supervisadas manualmente durante todo el desarrollo.
+
+---
+
+# Apoyo en Diseño Visual
+
+La IA fue utilizada para apoyar mejoras relacionadas con:
+
+* paletas de colores
+* estilo Soft UI
+* sombras suaves
+* diseño minimalista
+* efectos visuales
+* animaciones ligeras
+* organización visual del portafolio
+* diseño responsive
+* experiencia de usuario
+
+El objetivo principal fue lograr una interfaz moderna, profesional y visualmente consistente.
+
+---
+
+# Apoyo en Desarrollo Web
+
+Durante el desarrollo también se utilizaron herramientas de IA para apoyar tareas relacionadas con:
+
+* PHP
+* MySQL
+* Bootstrap
+* JavaScript
+* CSS avanzado
+* estructura de carpetas
+* rutas relativas
+* formularios
+* autenticación
+* panel administrativo
+* conexión a base de datos
+
+---
+
+# Correcciones Realizadas con Apoyo de IA
+
+Entre las mejoras realizadas durante el proceso se encuentran:
+
+* corrección de errores visuales
+* eliminación de estilos oscuros heredados
+* optimización de cards y contenedores
+* corrección de botones
+* mejoras de responsive design
+* integración de demos funcionales
+* optimización del login
+* corrección del panel administrativo
+* mejora de formularios
+* integración visual consistente
+* mejora del sistema de mensajes
+* limpieza estructural del CSS
+* optimización de navegación
+
+---
+
+# Aprendizajes Obtenidos
+
+El uso de herramientas de IA permitió reforzar conocimientos relacionados con:
+
+* desarrollo Full Stack
+* integración frontend/backend
+* organización de proyectos web
+* UI/UX Design
+* responsive design
+* PHP y MySQL
+* Bootstrap
+* estructura de rutas
+* despliegue mediante FileZilla
+* optimización visual
+* buenas prácticas de diseño
+
+Además, permitió comprender de mejor manera distintos errores y soluciones aplicadas durante el desarrollo.
+
+---
+
+# Consideraciones Éticas
+
+Las herramientas de Inteligencia Artificial fueron utilizadas únicamente como apoyo técnico y educativo.
+
+La IA no reemplazó el trabajo personal realizado en el proyecto, sino que fue utilizada como una herramienta complementaria para:
+
+* comprender errores
+* optimizar soluciones
+* mejorar el diseño
+* apoyar el aprendizaje
+* acelerar procesos de corrección y revisión
+
+Todas las decisiones finales, modificaciones y validaciones fueron realizadas manualmente durante el desarrollo del sistema.
+
+---
+
+# Resultado Final
+
+Gracias al apoyo de herramientas de IA y al trabajo progresivo de desarrollo, se logró obtener un sistema:
+
+* funcional
+* responsive
+* visualmente profesional
+* estructuralmente más limpio
+* optimizado para servidor
+* preparado para futuras mejoras
+
+El proyecto final refleja tanto el aprendizaje técnico adquirido como el uso responsable de herramientas modernas de apoyo al desarrollo.
